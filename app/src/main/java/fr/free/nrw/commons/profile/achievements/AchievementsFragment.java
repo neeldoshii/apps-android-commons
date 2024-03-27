@@ -88,13 +88,13 @@ public class AchievementsFragment extends CommonsDaggerSupportFragment {
         View rootView = binding.getRoot();
 
         binding.achievementInfo.setOnClickListener(view -> showInfoDialog());
-        binding.imagesUploadInfo.setOnClickListener(view -> showUploadInfo());
-        binding.imagesRevertedInfo.setOnClickListener(view -> showRevertedInfo());
-        binding.imagesUsedByWikiInfo.setOnClickListener(view -> showUsedByWikiInfo());
-        binding.imagesNearbyInfo.setOnClickListener(view -> showImagesViaNearbyInfo());
-        binding.imagesFeaturedInfo.setOnClickListener(view -> showFeaturedImagesInfo());
-        binding.thanksReceivedInfo.setOnClickListener(view -> showThanksReceivedInfo());
-        binding.qualityImagesInfo.setOnClickListener(view -> showQualityImagesInfo());
+        binding.imagesUploadInfoIcon.setOnClickListener(view -> showUploadInfo());
+        binding.imagesRevertedInfoIcon.setOnClickListener(view -> showRevertedInfo());
+        binding.imagesUsedByWikiInfoIcon.setOnClickListener(view -> showUsedByWikiInfo());
+        binding.imagesNearbyInfoIcon.setOnClickListener(view -> showImagesViaNearbyInfo());
+        binding.imagesFeaturedInfoIcon.setOnClickListener(view -> showFeaturedImagesInfo());
+        binding.thanksReceivedInfoIcon.setOnClickListener(view -> showThanksReceivedInfo());
+        binding.qualityImagesInfoIcon.setOnClickListener(view -> showQualityImagesInfo());
 
         // DisplayMetrics used to fetch the size of the screen
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -112,19 +112,9 @@ public class AchievementsFragment extends CommonsDaggerSupportFragment {
 
         setHasOptionsMenu(true);
 
-        // Set the initial value of WikiData edits to 0
-        binding.wikidataEdits.setText("0");
-        if(sessionManager.getUserName() == null || sessionManager.getUserName().equals(userName)){
-            binding.tvAchievementsOfUser.setVisibility(View.GONE);
-        }else{
-            binding.tvAchievementsOfUser.setVisibility(View.VISIBLE);
-            binding.tvAchievementsOfUser.setText(getString(R.string.achievements_of_user,userName));
-        }
-
         // Achievements currently unimplemented in Beta flavor. Skip all API calls.
         if(ConfigUtils.isBetaFlavour()) {
             binding.progressBar.setVisibility(View.GONE);
-            binding.imagesUsedByWikiText.setText(R.string.no_image);
             binding.imagesRevertedText.setText(R.string.no_image_reverted);
             binding.imagesUploadTextParam.setText(R.string.no_image_uploaded);
             binding.wikidataEdits.setText("0");
@@ -194,7 +184,7 @@ public class AchievementsFragment extends CommonsDaggerSupportFragment {
                                         setUploadCount(Achievements.from(response));
                                     } else {
                                         Timber.d("success");
-                                        binding.layoutImageReverts.setVisibility(View.INVISIBLE);
+                                        // TODO Create a Method to Hide all the Statistics
                                         binding.achievementBadgeImage.setVisibility(View.INVISIBLE);
                                         // If the number of edits made by the user are more than 150,000
                                         // in some cases such high number of wiki edit counts cause the
@@ -304,13 +294,13 @@ public class AchievementsFragment extends CommonsDaggerSupportFragment {
      */
     private void setUploadProgress(int uploadCount){
         if (uploadCount==0){
-            setZeroAchievements();
+            // TODO
+            //setZeroAchievements();
         }else {
             binding.imagesUploadedProgressbar.setVisibility(View.VISIBLE);
             binding.imagesUploadedProgressbar.setProgress
                     (100*uploadCount/levelInfo.getMaxUploadCount());
-            binding.tvUploadedImages.setText
-                (uploadCount + "/" + levelInfo.getMaxUploadCount());
+            binding.imageUploadedTVCount.setText(uploadCount+"/"+levelInfo.getMaxUploadCount());
         }
 
     }
@@ -329,7 +319,6 @@ public class AchievementsFragment extends CommonsDaggerSupportFragment {
         binding.imageRevertsProgressbar.setVisibility(View.INVISIBLE);
         binding.imagesUsedByWikiProgressBar.setVisibility(View.INVISIBLE);
         binding.achievementBadgeImage.setVisibility(View.INVISIBLE);
-        binding.imagesUsedByWikiText.setText(R.string.no_image);
         binding.imagesRevertedText.setText(R.string.no_image_reverted);
         binding.imagesUploadTextParam.setText(R.string.no_image_uploaded);
         binding.achievementBadgeImage.setVisibility(View.INVISIBLE);
@@ -343,7 +332,7 @@ public class AchievementsFragment extends CommonsDaggerSupportFragment {
         binding.imageRevertsProgressbar.setVisibility(View.VISIBLE);
         binding.imageRevertsProgressbar.setProgress(notRevertPercentage);
         String revertPercentage = Integer.toString(notRevertPercentage);
-        binding.imageRevertsProgressbar.setProgressTextFormatPattern(revertPercentage + "%%");
+        binding.imageRevertTVCount.setText(revertPercentage + "%");
         binding.imagesRevertLimitText.setText(getResources().getString(R.string.achievements_revert_limit_message)+ levelInfo.getMinNonRevertPercentage() + "%");
     }
 
@@ -357,10 +346,7 @@ public class AchievementsFragment extends CommonsDaggerSupportFragment {
         binding.thanksReceived.setText(String.valueOf(achievements.getThanksReceived()));
         binding.imagesUsedByWikiProgressBar.setProgress
                 (100 * achievements.getUniqueUsedImages() / levelInfo.getMaxUniqueImages());
-        if(binding.tvWikiPb != null) {
-            binding.tvWikiPb.setText
-                (achievements.getUniqueUsedImages() + "/" + levelInfo.getMaxUniqueImages());
-        }
+        binding.imagesUsedCount.setText(achievements.getUniqueUsedImages() + "/" + levelInfo.getMaxUploadCount());
         binding.imageFeatured.setText(String.valueOf(achievements.getFeaturedImages()));
         binding.qualityImages.setText(String.valueOf(achievements.getQualityImages()));
         String levelUpInfoString = getString(R.string.level).toUpperCase();
