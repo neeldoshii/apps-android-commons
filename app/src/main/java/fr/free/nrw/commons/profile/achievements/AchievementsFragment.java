@@ -64,7 +64,7 @@ public class AchievementsFragment extends CommonsDaggerSupportFragment {
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     // To keep track of the number of wiki edits made by a user
-    private int numberOfEdits = 0;
+    private int numberOfEdits;
 
     private String userName;
 
@@ -184,7 +184,7 @@ public class AchievementsFragment extends CommonsDaggerSupportFragment {
                                         setUploadCount(Achievements.from(response));
                                     } else {
                                         Timber.d("success");
-                                        // TODO Create a Method to Hide all the Statistics
+                                        hideStatistics();
                                         binding.achievementBadgeImage.setVisibility(View.INVISIBLE);
                                         // If the number of edits made by the user are more than 150,000
                                         // in some cases such high number of wiki edit counts cause the
@@ -211,6 +211,41 @@ public class AchievementsFragment extends CommonsDaggerSupportFragment {
                 Timber.d(e+"success");
             }
         }
+    }
+
+    /**
+     *
+     */
+    private void hideStatistics(){
+        //Nearby Places
+        binding.wikidataEditsIcon.setVisibility(View.GONE);
+        binding.imagesNearbyData.setVisibility(View.GONE);
+        binding.imagesNearbyInfoIcon.setVisibility(View.GONE);
+
+        //Featured Images
+        binding.featuredImageIcon.setVisibility(View.GONE);
+        binding.imagesFeaturedData.setVisibility(View.GONE);
+        binding.featuredImageIcon.setVisibility(View.GONE);
+        binding.wikidataEdits.setVisibility(View.GONE);
+
+        //Quality Images
+        binding.featuredImageIcon.setVisibility(View.GONE);
+        binding.imagesFeaturedData.setVisibility(View.GONE);
+        binding.featuredImageIcon.setVisibility(View.GONE);
+        binding.imageFeatured.setVisibility(View.GONE);
+
+        //Thanks Images
+        binding.qualityImageIcon.setVisibility(View.GONE);
+        binding.qualityImagesData.setVisibility(View.GONE);
+        binding.qualityImagesInfoIcon.setVisibility(View.GONE);
+        binding.qualityImages.setVisibility(View.GONE);
+
+        //Nearby Places
+        binding.thanksImageIcon.setVisibility(View.GONE);
+        binding.thanksReceivedData.setVisibility(View.GONE);
+        binding.thanksReceivedInfoIcon.setVisibility(View.GONE);
+        binding.thanksReceived.setVisibility(View.GONE);
+
     }
 
     /**
@@ -294,8 +329,7 @@ public class AchievementsFragment extends CommonsDaggerSupportFragment {
      */
     private void setUploadProgress(int uploadCount){
         if (uploadCount==0){
-            // TODO
-            //setZeroAchievements();
+            setZeroAchievements();
         }else {
             binding.imagesUploadedProgressbar.setVisibility(View.VISIBLE);
             binding.imagesUploadedProgressbar.setProgress
