@@ -106,10 +106,10 @@ public class MoreBottomSheetFragment extends BottomSheetDialogFragment {
         BasicKvStore store = new BasicKvStore(this.getContext(), getUserName());
         String level = store.getString("userAchievementsLevel","0");
         if (level.equals("0")) {
-            moreProfile.setText(getUserName() + " (" + getString(R.string.see_your_achievements) + ")");
+            moreProfile.setText(requireContext().getString(R.string.profileLevel, getUserName(), getString(R.string.see_your_achievements)));
         }
         else {
-            moreProfile.setText(getUserName() + " (" + getString(R.string.level) + " " + level + ")");
+            moreProfile.setText(requireContext().getString(R.string.profileLevel, getUserName(),level));
         }
     }
 
