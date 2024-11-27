@@ -104,30 +104,37 @@
       app:tint="@color/black" />
 
     <!--  Image's Uploaded Progress Bar  -->
-    <ProgressBar
-      android:id="@+id/images_uploaded_progressbar"
-      style="?android:attr/progressBarStyleHorizontal"
-      android:layout_width="0dp"
+    <RelativeLayout
+      android:id="@+id/rl_images_Uploaded"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginStart="@dimen/activity_margin_horizontal"
-      android:layout_marginTop="@dimen/activity_margin_horizontal"
       android:layout_marginEnd="@dimen/activity_margin_horizontal"
-      android:progressDrawable="@android:drawable/progress_horizontal"
-      app:layout_constraintEnd_toStartOf="@+id/imageUploadedTVCount"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/images_upload_text_param"
-      tools:progress="50" />
-
-    <TextView
-      android:id="@+id/imageUploadedTVCount"
-      style="?android:textAppearanceMedium"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginEnd="@dimen/activity_margin_horizontal"
-      app:layout_constraintBottom_toBottomOf="@+id/images_uploaded_progressbar"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/images_uploaded_progressbar"
-      tools:text="10/15" />
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/images_upload_text_param">
+
+      <ProgressBar
+        android:id="@+id/images_uploaded_progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:progressDrawable="@android:drawable/progress_horizontal"
+        android:progressBackgroundTintMode="multiply"
+        android:progressTint="#5ce65c"
+        tools:progress="50" />
+
+      <TextView
+        android:id="@+id/imageUploadedTVCount"
+        style="?android:textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="@dimen/activity_margin_horizontal"
+        tools:text="10/15" />
+
+    </RelativeLayout>
 
     <com.google.android.material.divider.MaterialDivider
       android:id="@+id/materialDivider"
@@ -138,7 +145,7 @@
       android:layout_marginEnd="@dimen/activity_margin_horizontal"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/images_uploaded_progressbar" />
+      app:layout_constraintTop_toBottomOf="@+id/rl_images_Uploaded" />
 
 
     <!-- Image's Not Reverted -->
@@ -178,30 +185,36 @@
       app:tint="@color/black" />
 
     <!--  Image's Not Reverted Progress Bar  -->
-    <ProgressBar
-      android:id="@+id/image_reverts_progressbar"
-      style="?android:attr/progressBarStyleHorizontal"
-      android:layout_width="0dp"
+    <RelativeLayout
+      android:id="@+id/rl_images_reverted"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginStart="@dimen/activity_margin_horizontal"
-      android:layout_marginTop="@dimen/activity_margin_horizontal"
       android:layout_marginEnd="@dimen/activity_margin_horizontal"
-      android:progressDrawable="@android:drawable/progress_horizontal"
-      app:layout_constraintEnd_toStartOf="@+id/imageUploadedTVCount"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/images_reverted_text"
-      tools:progress="50" />
-
-    <TextView
-      android:id="@+id/imageRevertTVCount"
-      style="?android:textAppearanceMedium"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginEnd="@dimen/activity_margin_horizontal"
-      app:layout_constraintBottom_toBottomOf="@+id/image_reverts_progressbar"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/image_reverts_progressbar"
-      tools:text="10/15" />
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/images_reverted_text">
+
+      <ProgressBar
+        android:id="@+id/image_reverts_progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:progressDrawable="@android:drawable/progress_horizontal"
+        android:progressBackgroundTintMode="multiply"
+        android:progressTint="#5ce65c"
+        tools:progress="50" />
+
+      <TextView
+        android:id="@+id/imageRevertTVCount"
+        style="?android:textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        tools:text="10/15" />
+    </RelativeLayout>
+
 
     <com.google.android.material.divider.MaterialDivider
       android:id="@+id/materialDivider1"
@@ -212,7 +225,7 @@
       android:layout_marginEnd="@dimen/activity_margin_horizontal"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/image_reverts_progressbar" />
+      app:layout_constraintTop_toBottomOf="@+id/rl_images_reverted" />
 
     <!-- Image Used -->
     <TextView
@@ -239,31 +252,35 @@
       app:tint="@color/black" />
 
     <!--  Image's Used Progress Bar  -->
-
-    <ProgressBar
-      android:id="@+id/images_used_by_wiki_progress_bar"
-      style="?android:attr/progressBarStyleHorizontal"
-      android:layout_width="0dp"
+    <RelativeLayout
+      android:id="@+id/rl_images_used"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginStart="@dimen/activity_margin_horizontal"
-      android:layout_marginTop="@dimen/activity_margin_horizontal"
       android:layout_marginEnd="@dimen/activity_margin_horizontal"
-      android:progressDrawable="@android:drawable/progress_horizontal"
-      app:layout_constraintEnd_toStartOf="@+id/imagesUsedCount"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/images_used_tv"
-      tools:progress="50" />
-
-    <TextView
-      android:id="@+id/imagesUsedCount"
-      style="?android:textAppearanceMedium"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginEnd="@dimen/activity_margin_horizontal"
-      app:layout_constraintBottom_toBottomOf="@+id/images_used_by_wiki_progress_bar"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/images_used_by_wiki_progress_bar"
-      tools:text="10/15" />
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/images_used_tv">
+
+      <ProgressBar
+        android:id="@+id/images_used_by_wiki_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:progressDrawable="@android:drawable/progress_horizontal"
+        android:progressBackgroundTintMode="multiply"
+        android:progressTint="#5ce65c"
+        tools:progress="50" />
+
+      <TextView
+        android:id="@+id/imagesUsedCount"
+        style="?android:textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        tools:text="10/15" />
+    </RelativeLayout>
 
     <com.google.android.material.divider.MaterialDivider
       android:id="@+id/materialDivider2"
@@ -274,7 +291,7 @@
       android:layout_marginEnd="@dimen/activity_margin_horizontal"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/images_used_by_wiki_progress_bar" />
+      app:layout_constraintTop_toBottomOf="@+id/rl_images_used" />
 
     <!-- Statistics -->
     <TextView
