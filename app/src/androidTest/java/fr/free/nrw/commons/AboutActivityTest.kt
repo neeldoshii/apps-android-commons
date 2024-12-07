@@ -25,7 +25,7 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class AboutActivityTest {
-    @get:Rule
+    @get:Rule.
     var activityRule: ActivityTestRule<*> = ActivityTestRule(AboutActivity::class.java)
 
     private val device: UiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
